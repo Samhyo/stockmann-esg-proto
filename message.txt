@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stockmann ESG Dashboard 2023</title>
+<style>
+  :root {
+    --bg: #f5f7f2;
+    --card: #ffffff;
+    --text: #1f2933;
+    --muted: #667085;
+    --line: #d9e2d0;
+    --accent: #2f6f4e;
+    --accent2: #4d7c91;
+    --accent3: #8a6f3f;
+    --light: #e8f1e6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  .page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 28px;
+  }
+  .hero {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    gap: 20px;
+    align-items: stretch;
+    margin-bottom: 22px;
+  }
+  .panel, .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(31,41,51,0.08);
+  }
+  .panel { padding: 26px; }
+  h1 {
+    margin: 0 0 8px 0;
+    font-size: 34px;
+    letter-spacing: -0.03em;
+  }
+  h2 {
+    margin: 0 0 16px 0;
+    font-size: 22px;
+  }
+  h3 {
+    margin: 0 0 8px 0;
+    font-size: 17px;
+  }
+  p { line-height: 1.45; }
+  .subtitle {
+    color: var(--muted);
+    margin: 0;
+    font-size: 16px;
+  }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .pill {
+    border-radius: 999px;
+    background: var(--light);
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .card { padding: 18px; }
+  .metric {
+    font-size: 30px;
+    font-weight: 800;
+    margin: 8px 0;
+  }
+  .label { color: var(--muted); font-size: 13px; }
+  .section-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .tag {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .e { background: #e7f2ea; color: #25633f; }
+  .s { background: #e8f0f7; color: #245a75; }
+  .g { background: #f2ede3; color: #745522; }
+  .bar-wrap {
+    margin-top: 16px;
+  }
+  .bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin: 10px 0 5px;
+  }
+  .bar {
+    height: 12px;
+    background: #edf1ea;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 999px;
+  }
+  .fill.blue { background: var(--accent2); }
+  .fill.gold { background: var(--accent3); }
+  ul {
+    margin: 10px 0 0 18px;
+    padding: 0;
+    line-height: 1.55;
+  }
+  .bottom {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 16px;
+  }
+  .insight {
+    border-left: 5px solid var(--accent);
+    background: #fbfdf9;
+    padding: 14px;
+    border-radius: 12px;
+    margin-top: 12px;
+  }
+  .small {
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .traffic {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .traffic-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: #fcfdfb;
+  }
+  .dot {
+    width: 13px; height: 13px; border-radius: 50%;
+    display: inline-block; margin-right: 8px;
+    background: var(--accent);
+  }
+  .dot.mid { background: var(--accent3); }
+  .source {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: right;
+  }
+  @media (max-width: 900px) {
+    .hero, .bottom { grid-template-columns: 1fr; }
+    .kpis, .section-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .kpis, .section-grid { grid-template-columns: 1fr; }
+    .page { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="panel">
+        <h1>Stockmann Group ESG Dashboard 2023</h1>
+        <p class="subtitle">Prototype dashboard based on Stockmann Group Sustainability Review 2023.</p>
+        <div class="pill-row">
+          <span class="pill">Climate target: -42% by 2030</span>
+          <span class="pill">Themes: climate, circularity, human rights</span>
+          <span class="pill">Focus: resource-wise retail</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>AI summary</h2>
+        <p>Stockmann Group’s sustainability focus is on reducing climate impact, increasing circularity, improving human rights in the supply chain, and maintaining transparent governance.</p>
+        <p class="small">AI-generated summary for prototype use.</p>
+      </div>
+    </section>
+
+    <section class="kpis">
+      <div class="card">
+        <div class="label">Revenue 2023</div>
+        <div class="metric">€951.7m</div>
+        <div class="small">Group revenue</div>
+      </div>
+      <div class="card">
+        <div class="label">Employees, average</div>
+        <div class="metric">5,801</div>
+        <div class="small">Average personnel 2023</div>
+      </div>
+      <div class="card">
+        <div class="label">GHG emissions</div>
+        <div class="metric">261 ktCO₂e</div>
+        <div class="small">Stockmann Group 2023</div>
+      </div>
+      <div class="card">
+        <div class="label">Women in personnel</div>
+        <div class="metric">91%</div>
+        <div class="small">Group personnel gender share</div>
+      </div>
+    </section>
+
+    <section class="section-grid">
+      <div class="card">
+        <span class="tag e">Environmental</span>
+        <h3>Climate & circularity</h3>
+        <ul>
+          <li>42% emission reduction target by 2030 vs. 2022.</li>
+          <li>Lindex: 42% of assortment contained at least 15% recycled materials.</li>
+          <li>Energy efficiency actions in stores and properties.</li>
+        </ul>
+        <div class="bar-wrap">
+          <div class="bar-label"><span>Climate target progress indicator</span><span>42%</span></div>
+          <div class="bar"><div class="fill" style="width:42%"></div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="tag s">Social</span>
+        <h3>People & human rights</h3>
+        <ul>
+          <li>Personnel: 91% women, 9% men.</li>
+          <li>WE Women programme reached 114,000 workers, including 68,000 women.</li>
+          <li>Sickness absence rate: 5.4% in 2023.</li>
+        </ul>
+        <div class="bar-wrap">
+          <div class="bar-label"><span>Women in personnel</span><span>91%</span></div>
+          <div class="bar"><div class="fill blue" style="width:91%"></div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="tag g">Governance</span>
+        <h3>Governance & transparency</h3>
+        <ul>
+          <li>Preparing for CSRD reporting and double materiality analysis.</li>
+          <li>Code of Conduct and supplier responsibility principles.</li>
+          <li>Board of Directors gender balance: 50/50 in 2023.</li>
+        </ul>
+        <div class="bar-wrap">
+          <div class="bar-label"><span>Board gender balance</span><span>50/50</span></div>
+          <div class="bar"><div class="fill gold" style="width:50%"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom">
+      <div class="card">
+        <h2>Dashboard interpretation</h2>
+        <div class="insight">
+          <strong>Key insight:</strong> Stockmann’s strongest ESG story is the combination of a science-based climate target, circularity development, and supply-chain human-rights work.
+        </div>
+        <div class="insight">
+          <strong>Recommendation:</strong> The next dashboard version should track year-by-year progress for emissions, recycled materials, supplier audits, employee wellbeing, and CSRD readiness.
+        </div>
+      </div>
+      <div class="card">
+        <h2>Status overview</h2>
+        <div class="traffic">
+          <div class="traffic-row"><span><span class="dot"></span>Climate target defined</span><strong>Good</strong></div>
+          <div class="traffic-row"><span><span class="dot"></span>Circular materials</span><strong>Good</strong></div>
+          <div class="traffic-row"><span><span class="dot mid"></span>Real-time ESG data</span><strong>Improving</strong></div>
+          <div class="traffic-row"><span><span class="dot"></span>Governance transparency</span><strong>Good</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="source">
+      Source: Stockmann Group Sustainability Review 2023. Dashboard created as a prototype for ESG report analysis.
+    </div>
+  </main>
+</body>
+</html>
